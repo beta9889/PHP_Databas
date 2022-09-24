@@ -1,4 +1,4 @@
--- Active: 1663681828039@@127.0.0.1@3306@a20behta
+-- Active: 1663691954105@@127.0.0.1@3306@a20behta
 USE a20behta;
 
 INSERT INTO DeerGroup(groupname,capacity,filled)
@@ -17,9 +17,9 @@ INSERT INTO Prices(priceComment,given,deerGivenTo)
 			("Get fucked","2022-10-10",2);
 CALL RetireWorkingDeer(2,69,"Helverik","Rudolfs frästelse");
 CALL RetireWorkingDeer(4,69,"BigTree","Julafton");
-INSERT INTO DeerToDeer(firstDeerNr,firstsDeerRetired,secondDeerNr,secondDeerRetired)
-			VALUES(1,false,3,false),
-			(1,false,2,true);
+INSERT INTO DeerToDeer(firstDeerNr,secondDeerNr)
+			VALUES(1,3),
+			(1,2);
 
 INSERT INTO Sled(id,sledName ,Registration,RegionId)
 			Value(21,"SleepLess nights",00,1);

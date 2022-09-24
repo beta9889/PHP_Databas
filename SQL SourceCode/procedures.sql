@@ -1,13 +1,7 @@
--- Active: 1663681828039@@127.0.0.1@3306@a20behta
+-- Active: 1663691954105@@127.0.0.1@3306@a20behta
 USE a20behta;
 
 DELIMITER //
-
--- CREATE PROCEDURE CreateUser(username VARCHAR(30), passWrd CHAR(40))
--- BEGIN
---     CREATE USER username@'localhost' IDENTIFIED BY passWrd;
---     GRANT ALL PRIVILEGES ON a20behta.* TO username;
--- END //
 
 CREATE PROCEDURE GetWorkingDeer()
 BEGIN
