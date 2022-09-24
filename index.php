@@ -8,7 +8,7 @@
     
 <body>
 <div class="flex">
-    <form action='RunAll.php' method='POST'>
+    <form action='LandingPage.php' method='POST'>
             LoginName <input type='string' name='userName'/> <br/>
             Password: <input type='password' name='password'/> <br/>
         <input type='submit'/>
