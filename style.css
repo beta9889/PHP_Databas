@@ -1,0 +1,13 @@
+.flex {
+    display: flex;
+    justify-content: space-evenly;
+    row-gap: 20px;
+    background-color: aqua;
+}
+
+.viewWorkingDeer{
+    display: flex;
+    margin: auto;
+    justify-content: flex-start;
+    background-color: grey;
+}

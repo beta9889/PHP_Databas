@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Deer View</title>
+</head>
+    
 <body>
-
-<style>
-.flex {
-    display: flex;
-    justify-content: space-evenly;
-    row-gap: 20px;
-}
-</style>
-
 <div class="flex">
-    <form action='RunAll.php' method='POST' class="formContent">
-            LoginName <input type='string' name='userName'/>
-            Password: <input type='string' name='password'/> </br>
+    <form action='RunAll.php' method='POST'>
+            LoginName <input type='string' name='userName'/> <br/>
+            Password: <input type='password' name='password'/> <br/>
         <input type='submit'/>
     </form>
 </div>

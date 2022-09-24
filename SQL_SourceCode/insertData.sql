@@ -26,5 +26,11 @@ INSERT INTO Sled(id,sledName ,Registration,RegionId)
 INSERT INTO Sled(id,sledName,Registration,RegionId)
 			VALUES(10,"Coal Patrol",b'11',2);
 
-INSERT INTO WorkingDeer(DeerGroup,ClanName,BaseRace,Smell,Pay,BankAccount,DeerNr)
-			VALUES("Hammered","glados",1,b'101',615,8456,-1);
+DROP USER 'a'@'localhost';
+CREATE USER 'a'@'localhost' IDENTIFIED BY 'b';
+GRANT SELECT ON a20behta.* TO 'a'@'localhost';
+SHOW GRANTS FOR 'a'@'localhost';
+
+DROP USER IF EXISTS 'b'@'localhost';
+CREATE USER 'b'@'localhost' IDENTIFIED BY 'a';
+ GRANT INSERT, UPDATE, SELECT, DELETE ON a20behta.* TO 'b'@'localhost';
