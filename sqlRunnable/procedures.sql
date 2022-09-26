@@ -1,7 +1,7 @@
 
 USE a20behta;
 
-DELIMITER //
+DELIMITER ??
 
 CREATE PROCEDURE GetWorkingDeer()
 BEGIN
@@ -9,7 +9,7 @@ BEGIN
         CONCAT(WorkingDeer.ClanName, " ",BaseRaces.RaceString) AS "Name" ,
         CONV(WorkingDeer.Smell,2,10) AS "Smell",
         workingDeer.Pay,WorkingDeer.DeerGroup FROM WorkingDeer INNER JOIN BaseRaces ON WorkingDeer.BaseRace = BaseRaces.BitValue;
-END //
+END ??
 
 CREATE PROCEDURE GetSpecificWorkingDeer(Id SMALLINT)
 BEGIN
@@ -18,7 +18,7 @@ BEGIN
         CONV(WorkingDeer.Smell,2,10) AS "Smell",
         pay,DeerGroup FROM WorkingDeer INNER JOIN BaseRaces ON WorkingDeer.BaseRace = BaseRaces.BitValue
         WHERE WorkingDeer.DeerNr = Id;
-END //
+END ??
 
 CREATE procedure RetireWorkingDeer(id SMALLINT, canNr INT, factory VARCHAR(15), taste VARCHAR(30))
 BEGIN 
@@ -34,6 +34,6 @@ BEGIN
     DELETE FROM Prices WHERE Prices.DeerGivenTo = id;
     DELETE FROM WorkingDeer WHERE WorkingDeer.DeerNr = id;
 
-END //
+END ??
 
 DELIMITER ;
