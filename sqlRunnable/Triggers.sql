@@ -1,8 +1,6 @@
 
 USE a20behta;
 DELIMITER //
-
-
 CREATE TRIGGER BeforeBaseRaces BEFORE INSERT ON BaseRaces
 FOR EACH ROW BEGIN
     INSERT INTO Logging(Date_,UsernameTtableAccessed,ActionTaken) VALUES (NOW(),USER(), "BaseRaces", "INSERT");

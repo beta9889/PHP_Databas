@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    
+?>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +25,6 @@
     if(isset($_POST['userName'])){
         try{
             $connection = new PDO('mysql:dbname=a20behta; host='. $_POST['Server'] , $_POST['userName'], $_POST['password']);
-
             $connection->query(file_get_contents('sqlRunnable/CreateTable.sql'));
             $connection->query(file_get_contents('sqlRunnable/Triggers.sql'));
             $connection->query(file_get_contents('sqlRunnable/procedures.sql'));

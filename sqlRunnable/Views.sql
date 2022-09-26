@@ -1,3 +1,4 @@
+-- Active: 1663691954105@@127.0.0.1@3306@a20behta
 USE a20behta;
 CREATE VIEW ViewWorkingDeer AS SELECT  WorkingDeer.deerNr AS DeerNr, 
         CONCAT(WorkingDeer.ClanName, " ",BaseRaces.RaceString) AS 'DeerName',
@@ -46,5 +47,3 @@ CREATE VIEW ViewDeerConnections AS SELECT W1.Name AS 'Deer 1', W1.DeerNr AS "Dee
 CREATE VIEW ViewDeerGroup AS SELECT DeerGroup.GroupName, DeerGroup.Capacity, DeerGroup.Filled AS "Raw Data Filled",
         (( DeerGroup.Filled / DeerGroup.Capacity ) * 100 ) AS "Filled As Procent", Group_ConCat(concat(ViewWorkingDeer.Name)) AS "Group Members"
         FROM DeerGroup INNER JOIN ViewWorkingDeer ON DeerGroup.GroupName = ViewWorkingDeer.DeerGroup GROUP BY DeerGroup.GroupName; 
-
-select * from viewalldeer;
