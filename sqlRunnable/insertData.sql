@@ -27,7 +27,7 @@ INSERT INTO Sled(id,sledName ,Registration,RegionId)
 INSERT INTO Sled(id,sledName,Registration,RegionId)
 			VALUES(10,"Coal Patrol",b'11',2);
 
-DROP USER 'a'@'localhost';
+DROP USER IF EXISTS 'a'@'localhost';
 CREATE USER 'a'@'localhost' IDENTIFIED BY 'b';
 GRANT SELECT ON a20behta.* TO 'a'@'localhost';
 SHOW GRANTS FOR 'a'@'localhost';

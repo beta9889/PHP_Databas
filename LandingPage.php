@@ -11,7 +11,7 @@
         try{
             $_SESSION['user'] = $_POST['userName'];
             $_SESSION['pass'] = $_POST['password'];
-            $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass'],);
+            $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass']);
             $queryString = 'SELECT ViewWorkingDeer.DeerNr, ViewWorkingDeer.DeerName FROM ViewWorkingDeer';
 
             $stmt = $pdo->prepare($queryString);
@@ -20,7 +20,7 @@
             echo "<form action='deerView.php' method='POST' class='flex'>
                     <select name='deer' id='deerSelector'>";   
             
-                    foreach($stmt->fetchAll() as $row){
+            foreach($stmt->fetchAll() as $row){
                 echo "<option value='" . $row["DeerNr"] . "'>" . $row["DeerName"] . "</option>" ;
             }
             echo "<input type='submit' value='Submit'/> </select> </form>";
