@@ -13,7 +13,8 @@ CREATE VIEW ViewRetiredDeer AS SELECT  RetiredDeer.DeerNr AS DeerNr,
                 INNER JOIN BaseRaces ON
                 BaseRaces.BitValue = RetiredDeer.BaseRace;
 				
-CREATE VIEW ViewAllDeer AS SELECT DeerNr,DeerName,Smell,DeerGroup FROM ViewWorkingDeer UNION SELECT DeerNr,DeerName,Smell,DeerGroup FROM ViewRetiredDeer;
+CREATE VIEW ViewAllDeer AS SELECT DeerNr,DeerName,Smell,DeerGroup FROM ViewWorkingDeer 
+        UNION SELECT DeerNr,DeerName,Smell,DeerGroup FROM ViewRetiredDeer;
 select * from ViewAllDeer;
 
 CREATE VIEW ViewPrices AS SELECT GROUP_CONCAT(concat(Prices.PriceComment," " , Prices.Given, " \n ")) AS Price, 

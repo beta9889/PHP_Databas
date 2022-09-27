@@ -2,12 +2,33 @@
     display: flex;
     justify-content: space-evenly;
     row-gap: 20px;
-    background-color: aqua;
+    size: auto;
 }
 
 .viewWorkingDeer{
     display: flex;
     margin: auto;
-    justify-content: flex-start;
     background-color: grey;
 }
+
+.deerTableRow{
+    margin:auto;
+    size: auto;
+    justify-content: row;
+}
+
+table {
+    border-collapse: solid black;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
