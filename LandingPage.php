@@ -12,7 +12,7 @@
             $_SESSION['user'] = $_POST['userName'];
             $_SESSION['pass'] = $_POST['password'];
             $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass']);
-            $queryString = 'SELECT ViewWorkingDeer.DeerNr, ViewWorkingDeer.DeerName FROM ViewWorkingDeer';
+            $queryString = 'SELECT ViewAllDeer.DeerNr, ViewAllDeer.DeerName FROM ViewAllDeer';
 
             $stmt = $pdo->prepare($queryString);
             $stmt->execute();

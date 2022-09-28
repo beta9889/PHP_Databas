@@ -11,7 +11,7 @@
 <body>
 <div class="flex">
     <form action='LandingPage.php' method='POST'>
-            LoginName <input type='string' name='userName'/> <br/>
+            LoginName: <input type='string' name='userName'/> <br/>
             Password: <input type='password' name='password'/> <br/>
         <input type='submit' value='logg in'>
     </form>

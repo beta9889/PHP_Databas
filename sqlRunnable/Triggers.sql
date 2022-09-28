@@ -1,12 +1,12 @@
-
+-- Active: 1663691954105@@127.0.0.1@3306@a20behta
 
 USE a20behta;
-DELIMITER ??
 CREATE TRIGGER BeforeBaseRaces BEFORE INSERT ON BaseRaces
 FOR EACH ROW BEGIN
     INSERT INTO Logging(Date_,UsernameTtableAccessed,ActionTaken) VALUES (NOW(),USER(), "BaseRaces", "INSERT");
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Table is UnChangable';
-END ??
+END ;
+
 
 CREATE TRIGGER BeforeWorkingDeer BEFORE INSERT ON WorkingDeer
 FOR EACH ROW BEGIN
@@ -18,18 +18,18 @@ FOR EACH ROW BEGIN
         SIGNAL SQLSTATE '45202' SET MESSAGE_TEXT = 'Pay Needs to be above 0';
     END IF;
     UPDATE DeerGroup SET DeerGroup.Filled = DeerGroup.Filled + 1 WHERE DeerGroup.GroupName = NEW.DeerGroup; 
-END ??
+END ;
 
 CREATE TRIGGER DeleteWorkingDeer AFTER DELETE ON WorkingDeer
 FOR EACH ROW BEGIN
     INSERT INTO Logging(Date_,Username,TableAccessed,ActionTaken) VALUES (NOW(),USER(), "WorkingDeer", "DELETE");
     UPDATE DeerGroup SET DeerGroup.Filled = DeerGroup.Filled - 1 WHERE DeerGroup.groupName = OLD.DeerGroup; 
-END ??
+END ;
 
 CREATE TRIGGER BeforePrices BEFORE INSERT ON Prices
 FOR EACH ROW BEGIN
     INSERT INTO Logging(Date_,Username,TableAccessed,ActionTaken) VALUES (NOW(),USER(), "Prices", "INSERT"); 
-END ??
+END ;
 
 CREATE TRIGGER BeforeRetiredDeer BEFORE INSERT ON RetiredDeer
 FOR EACH ROW BEGIN
@@ -37,12 +37,12 @@ FOR EACH ROW BEGIN
 	IF NOT EXISTS (SELECT * FROM WorkingDeer WHERE WorkingDeer.deerNr = NEW.deerNr) THEN
         SIGNAL SQLSTATE '45401' SET MESSAGE_TEXT = 'Deer needs to work before being retired';
     END IF;
-END ??
+END ;
 
 CREATE TRIGGER BeforeColdPrices BEFORE INSERT ON ColdPrices
 FOR EACH ROW BEGIN
     INSERT INTO Logging(Date_,Username,TableAccessed,ActionTaken) VALUES (NOW(),USER(), "ColdPrices", "INSERT"); 
-END ??
+END ;
 
 CREATE TRIGGER BeforeDeerToDeer BEFORE INSERT ON DeerToDeer
 FOR EACH ROW BEGIN
@@ -50,18 +50,18 @@ FOR EACH ROW BEGIN
     IF NEW.firstDeerNr = NEW.secondDeerNr THEN
         SIGNAL SQLSTATE '45600' SET MESSAGE_TEXT = "deer id's cannot be the same for both";
     END IF;
-END ??
+END ;
 
 CREATE TRIGGER beforeDeerGroup BEFORE INSERT ON DeerGroup
 FOR EACH ROW BEGIN
     INSERT INTO Logging(Date_,Username,TableAccessed,ActionTaken) VALUES (NOW(),USER(), "DeerGroup", "INSERT"); 
-END ??
+END ;
 
 CREATE TRIGGER beforeBitToReg BEFORE INSERT ON BitToReg
 FOR EACH ROW BEGIN
     INSERT INTO Logging(Date_,Username,TableAccessed,ActionTaken) VALUES (NOW(),USER(), "BitToReg", "INSERT");
     SIGNAL SQLSTATE '45100' SET MESSAGE_TEXT = "Cannot change this table";
-END ??
+END ;
 
 CREATE TRIGGER beforeSled BEFORE INSERT ON Sled  
 FOR EACH ROW BEGIN
@@ -69,8 +69,4 @@ FOR EACH ROW BEGIN
     IF (NEW.sledName = "Brynolf" OR NEW.sledName = "Rudolf") THEN
         SIGNAL SQLSTATE '45301' SET MESSAGE_TEXT ='Cannot be named Brynolf or Rudolf';
     END IF;
-END ??
-
-DELIMITER ;
-
-select * from Logging
+END ;

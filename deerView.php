@@ -31,15 +31,19 @@
                 echo '<th>' . $row['DeerGroup'] . '</th>';
             echo '</th>';
             
+            echo '</table>';
+            if($row['retired'] == 0){
+
+                echo "<form action='deerView.php' method='GET'>
+                <input type='hidden' value='" . $deerNr . "'name='deleteDeer'/>
+                <input type='submit' name='retire this Deer'/>
+                </form>";  
+            }
         }
-        echo '</table>';
-        echo "<form action='deerView.php' method='GET' name='deleteDeer'>
-                    <input type='hidden' value='" . $deerNr . "'/>     
-                    <input type='submit' value'Delete this Deer'/>
-              </form>";
+        $stmt->closeCursor();
     }   
     else if(isset($_GET['deleteDeer'])){
-        echo 'deleting :'. $_GET['deleteDeer'];
+        
     }
     else{
         print_r("<h1>error sending message</h1>");
