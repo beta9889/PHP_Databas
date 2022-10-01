@@ -16,6 +16,7 @@
             $stmt = $pdo->prepare("SELECT * FROM ViewAllDeer WHERE  DeerNr = :ssnid");
             $stmt->bindValue(':ssnid',$_POST['deer']);
             $stmt->execute();
+            
             echo'<br/> <br/> <br/>';
             echo '<div class="flexCenter">';
             echo "<table border='1' cellpadding='2' cellspacing='2'>
@@ -46,6 +47,7 @@
             $stmt = $pdo->prepare("SELECT * FROM ViewDeerConnection WHERE ViewDeerConnection.DeerNr1=:ssnId;");
             $stmt->bindParam(':ssnId', $deerNr);
             $stmt->execute();
+
             echo "<br> <div class='flexCenter'>
                 <Table border='1' cellpadding='2' cellspacing='2'>
                     <tr >
@@ -64,29 +66,13 @@
             echo "</Table>
                 </div>";
             $stmt->closeCursor();
-
             echo "<br/> <br/> <br/> <br/> <br/> <br/> 
                 <h1> Add Deer Connection </h1>
-                <form action='deerView.php' method='POST'>
-                    <input type=hidden value='". $deerNr."'/>
+                <form action='addDeerConnection.php' method='POST'>
+                    <input type=hidden value='". $deerNr."' name='deerId'/>
                     <input type='number' name='addConnId'> Id of Deer to connect
                     <input type='submit'>
                 </form>";
-            if(isset($_POST['addConnId'])){
-                try{
-                    $stmt = $pdo->prepare("INSERT INTO DeerToDeer(firstDeerNr,secondDeerNr) Values(:mainDeer,:secondDeer)");
-                    $stmt->bindValue(":mainDeer",$_POST['deer']);
-                    $stmt->bindValue(":secondDeer",$_POST['addConnId']);
-                    $stmt->execute();
-                    foreach($stmt->fetchall() as $row){ print_r($row); }
-                    $stmt->closeCursor();
-                    echo"<h1 class='flexCenter'> Connection Added </h1>";
-
-                }
-                catch (Exception $e){
-                    echo"Error adding connection". $e->getMessage();
-                }
-            }
         }
     }
     else{

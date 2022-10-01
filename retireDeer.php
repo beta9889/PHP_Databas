@@ -26,7 +26,7 @@
         }
     }
     else if(isset($_GET['retireADeerId'])){
-        echo "<div class='flex'>
+        echo "<div class='flexCenter'>
             <form action='#' method='POST'>    
                 <input type='hidden' value='". $_GET['retireADeerId']."'name='retireADeerId'/>
                 <input type='number' name='CanNr'> Can Number </input> <br/>
