@@ -26,10 +26,9 @@ SHOW GRANTS FOR 'a'@'localhost';
 
 DROP USER IF EXISTS 'b'@'localhost';
 CREATE USER 'b'@'localhost' IDENTIFIED BY 'a';
-GRANT INSERT, UPDATE, SELECT, DELETE ON a20behta.* TO 'b'@'localhost';
-
+-- GRANT INSERT, UPDATE, SELECT, DELETE, ON a20behta.* TO 'b'@'localhost';
+GRANT ALL ON a20behta.* TO 'b'@'localhost';
 CALL RetireWorkingDeer(2,69,"Helverik","Rudolfs");
 CALL RetireWorkingDeer(4,69,"BigTree","Julafton");
 
-select * from viewalldeer;
-select * from viewworkingdeer;
+select * from logging;

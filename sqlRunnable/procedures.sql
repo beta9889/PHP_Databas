@@ -34,3 +34,5 @@ BEGIN
     DELETE FROM WorkingDeer WHERE WorkingDeer.DeerNr = ssnid;
 
 END ;
+
+select * from retireddeer;

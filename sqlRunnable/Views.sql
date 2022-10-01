@@ -13,9 +13,8 @@ CREATE VIEW ViewRetiredDeer AS SELECT  RetiredDeer.DeerNr AS DeerNr,
                 INNER JOIN BaseRaces ON
                 BaseRaces.BitValue = RetiredDeer.BaseRace;
 				
-CREATE VIEW ViewAllDeer AS SELECT DeerNr,DeerName,Smell,DeerGroup, 0 as retired FROM ViewWorkingDeer 
-        UNION SELECT DeerNr,DeerName,Smell,DeerGroup,1 as retired FROM ViewRetiredDeer;
-select * from ViewAllDeer;
+CREATE VIEW ViewAllDeer AS SELECT DeerNr,DeerName,Smell,DeerGroup, "Working" as retired FROM ViewWorkingDeer 
+        UNION SELECT DeerNr,DeerName,Smell,DeerGroup,"Retired" as retired FROM ViewRetiredDeer;
 
 CREATE VIEW ViewPrices AS SELECT GROUP_CONCAT(concat(Prices.PriceComment," " , Prices.Given, " \n ")) AS Price, 
 	CONCAT(WorkingDeer.ClanName, " ",BaseRaces.RaceString) AS 'DeerName', Prices.DeerGivenTo
@@ -37,16 +36,6 @@ CREATE VIEW ViewDeerGroup AS SELECT DeerGroup.GroupName, DeerGroup.Capacity, Dee
         (( DeerGroup.Filled / DeerGroup.Capacity ) * 100 ) AS "Filled As Procent", Group_ConCat(concat(ViewWorkingDeer.DeerName)) AS "Group Members"
         FROM DeerGroup INNER JOIN ViewWorkingDeer ON DeerGroup.GroupName = ViewWorkingDeer.DeerGroup GROUP BY DeerGroup.GroupName; 
 
--- CREATE VIEW ViewDeerConnections AS SELECT W1.Name AS 'Deer 1', W1.DeerNr AS "Deer 1 ID", W2.Name AS 'Deer 2',W2.DeerNr
---                 FROM ViewWorkingDeer AS W1, ViewWorkingDeer AS W2,DeerToDeer
---                 WHERE W1.DeerNr = DeerToDeer.FirstDeerNr AND W2.DeerNr = DeerToDeer.SecondDeerNr
---         UNION  (SELECT W1.Name AS "Deer 1", W1.DeerNr, R1.Name AS "Deer 2", R1.DeerNr
---                 FROM ViewWorkingDeer AS W1, ViewRetiredDeer AS R1,DeerToDeer
---                 WHERE W1.DeerNr = DeerToDeer.FirstDeerNr AND R1.DeerNr = DeerToDeer.SecondDeerNr)
---         UNION (SELECT R1.Name AS  "Deer 1", R1.DeerNr, W1.Name AS "Deer 2", W1.DeerNr
---                 FROM ViewWorkingDeer AS W1, ViewRetiredDeer AS R1,DeerToDeer
---                 WHERE R1.DeerNr = DeerToDeer.FirstDeerNr AND W1.DeerNr = DeerToDeer.SecondDeerNr)
---         UNION (SELECT R1.Name AS  "Deer 1", R1.DeerNr, R2.Name AS "Deer 2", R2.DeerNr
---                 FROM ViewRetiredDeer AS R2, ViewRetiredDeer AS R1,DeerToDeer
---                 WHERE R1.DeerNr = DeerToDeer.FirstDeerNr AND R2.DeerNr = DeerToDeer.SecondDeerNr)
---         ORDER BY DeerNr;
+CREATE VIEW ViewDeerConnection AS Select D1.DeerName as 'name1',D1.retired  as 'Deer1 Retired',D1.DeerNr as 'DeerNr1' ,D2.DeerName as 'name2', D2.retired  as 'Deer2 Retired',D2.DeerNr as 'DeerNr2'
+        From ViewAllDeer as D1 inner Join ViewAllDeer as D2 
+        Inner Join deertodeer ON deertodeer.FirstDeerNr = D1.DeerNr AND deertodeer.SecondDeerNr = D2.DeerNr; 

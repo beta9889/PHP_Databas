@@ -11,7 +11,7 @@
 
 <body>
 
-<div class="flex">
+<div class="flexCenter">
     <form action='Install.php' method='POST'>
             ServerLocation: <input type='string' name='Server'/> <br/>
             LoginName <input type='string' name='userName'/> <br/>
@@ -43,7 +43,7 @@
             $stmp = $connection->prepare(file_get_contents('sqlRunnable/Views.sql'));
             $stmp->execute();
             foreach($stmp->fetchall() as $row){print_r($row);}
-            $stmp->closeCursor();
+              $stmp->closeCursor();
             
             $stmp = $connection->prepare(file_get_contents('sqlRunnable/insertData.sql'));
             $stmp->execute();

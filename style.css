@@ -1,34 +1,4 @@
-.flex {
-    display: flex;
-    justify-content: space-evenly;
-    row-gap: 20px;
-    size: auto;
+.flexCenter{
+  display: flex;
+  justify-content: center;
 }
-
-.viewWorkingDeer{
-    display: flex;
-    margin: auto;
-    background-color: grey;
-}
-
-.deerTableRow{
-    margin:auto;
-    size: auto;
-    justify-content: row;
-}
-
-table {
-    border-collapse: solid black;
-    width: 100%;
-  }
-  
-  td, th {
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }

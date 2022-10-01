@@ -17,7 +17,7 @@
             $stmt = $pdo->prepare($queryString);
             $stmt->execute();
             
-            echo "<form action='deerView.php' method='POST' class='flex'>
+            echo "<form action='deerView.php' method='POST' class='flexCenter'>
                     <select name='deer' id='deerSelector'>";   
             
             foreach($stmt->fetchAll() as $row){
@@ -26,18 +26,17 @@
             echo "<input type='submit' value='Submit'/> </select> </form>";
         }
         catch( Exception $e){
-            echo "<div class='flex'> 
+            echo "<div class='flexCenter'> 
                     <h1>Error logging in </h1> <br/>
                     <h4>". $e->getMessage() ."</h4>";
         }
     }
     else{
-        echo "<div class='flex'>";
+        echo "<div class='flexCenter'>";
         echo    "<h1 > Please Logg in first </h1>";
         echo    "<a href=index.php> Back to Login Screen </a>" ;
         echo "</div>";
     }
-    print_r($_SESSION);
 ?>
 </body>
 </html>

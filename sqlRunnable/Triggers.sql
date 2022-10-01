@@ -50,6 +50,17 @@ FOR EACH ROW BEGIN
     IF NEW.firstDeerNr = NEW.secondDeerNr THEN
         SIGNAL SQLSTATE '45600' SET MESSAGE_TEXT = "deer id's cannot be the same for both";
     END IF;
+
+    IF NOT EXISTS (SELECT WorkingDeer.DeerNr FROM WorkingDeer Where WorkingDeer.DeerNr = new.firstDeerNr 
+    UNION SELECT RetiredDeer.DeerNr FROM RetiredDeer Where RetiredDeer.DeerNr = new.firstDeerNr) THEN
+            SIGNAL SQLSTATE '45601' SET MESSAGE_TEXT = "First deer Not found";
+    END IF;
+
+    IF NOT EXISTS (SELECT WorkingDeer.DeerNr FROM WorkingDeer Where WorkingDeer.DeerNr = new.secondDeerNr 
+    UNION SELECT RetiredDeer.DeerNr FROM RetiredDeer Where RetiredDeer.DeerNr = new.secondDeerNr) THEN
+            SIGNAL SQLSTATE '45601' SET MESSAGE_TEXT = "First deer Not found";
+    END IF;
+
 END ;
 
 CREATE TRIGGER beforeDeerGroup BEFORE INSERT ON DeerGroup
