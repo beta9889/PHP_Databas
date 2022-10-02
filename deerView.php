@@ -2,12 +2,13 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-<?php
+    <?php
     if(isset($_SESSION['user'])){
         $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass']); 
         if(isset($_POST['deer'])){
@@ -70,7 +71,7 @@
                 <h1> Add Deer Connection </h1>
                 <form action='addDeerConnection.php' method='POST'>
                     <input type=hidden value='". $deerNr."' name='deerId'/>
-                    <input type='number' name='addConnId'> Id of Deer to connect
+                    <input type='number' name='addConnId'> Id of Deer to connect </input> <br/>
                     <input type='submit'>
                 </form>";
         }
@@ -82,4 +83,5 @@
 ?>
 
 </body>
-</html> 
+
+</html>

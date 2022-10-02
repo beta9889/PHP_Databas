@@ -1,11 +1,13 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<?php
+    <?php
 
     if(isset($_POST['userName'])){
         try{
@@ -39,4 +41,5 @@
     }
 ?>
 </body>
+
 </html>

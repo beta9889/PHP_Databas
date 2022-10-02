@@ -19,16 +19,17 @@ INSERT INTO DeerToDeer(firstDeerNr,secondDeerNr)
 INSERT INTO Sled(id,sledName ,Registration,RegionId)
 			Value (21,"SleepLess nights",00,1),(10,"Coal Patrol",b'11',2);
 
+
+CALL RetireWorkingDeer(2,69,"Helverik","Rudolfs");
+CALL RetireWorkingDeer(4,69,"BigTree","Julafton");
+
 DROP USER IF EXISTS 'a'@'localhost';
 CREATE USER 'a'@'localhost' IDENTIFIED BY 'b';
 GRANT SELECT ON a20behta.* TO 'a'@'localhost';
-SHOW GRANTS FOR 'a'@'localhost';
 
 DROP USER IF EXISTS 'b'@'localhost';
 CREATE USER 'b'@'localhost' IDENTIFIED BY 'a';
 -- GRANT INSERT, UPDATE, SELECT, DELETE, ON a20behta.* TO 'b'@'localhost';
 GRANT ALL ON a20behta.* TO 'b'@'localhost';
-CALL RetireWorkingDeer(2,69,"Helverik","Rudolfs");
-CALL RetireWorkingDeer(4,69,"BigTree","Julafton");
 
 select * from logging;

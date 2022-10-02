@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <title>Deer View</title>
 </head>
-    
+
 <body>
-<?php
+    <?php
     if(isset($_POST['retireADeerId']) && isset($_POST['CanNr'])){
         $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass']);
         try{
@@ -38,4 +38,5 @@
     }
 ?>
 </body>
+
 </html>
