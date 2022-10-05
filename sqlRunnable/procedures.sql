@@ -21,6 +21,7 @@ END ;
 
 CREATE procedure RetireWorkingDeer(ssnid SMALLINT, canNr INT, factory VARCHAR(15), taste VARCHAR(30))
 BEGIN 
+
 	INSERT INTO RetiredDeer(DeerGroup,ClanName,BaseRace,Smell,Pay,BankAccount,DeerNr)
 		(SELECT DeerGroup,ClanName,BaseRace,Smell,Pay,BankAccount,DeerNr FROM WorkingDeer WHERE WorkingDeer.deerNr = ssnid);
 		

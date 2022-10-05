@@ -12,6 +12,7 @@
     if(isset($_SESSION['user'])){
         $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass']); 
         if(isset($_POST['deer'])){
+            
             $deerNr = $_POST['deer'];
             $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass']);
             $stmt = $pdo->prepare("SELECT * FROM ViewAllDeer WHERE  DeerNr = :ssnid");

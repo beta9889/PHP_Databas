@@ -13,9 +13,10 @@
         try{
             $_SESSION['user'] = $_POST['userName'];
             $_SESSION['pass'] = $_POST['password'];
-            $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass']);
-            $queryString = 'SELECT ViewAllDeer.DeerNr, ViewAllDeer.DeerName FROM ViewAllDeer';
 
+            $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass']);
+            
+            $queryString = 'SELECT ViewAllDeer.DeerNr, ViewAllDeer.DeerName FROM ViewAllDeer';
             $stmt = $pdo->prepare($queryString);
             $stmt->execute();
             
@@ -29,7 +30,7 @@
         }
         catch( Exception $e){
             echo "<div class='flexCenter'> 
-                    <h1>Error logging in </h1> <br/>
+                    <h1>Error </h1> <br/>
                     <h4>". $e->getMessage() ."</h4>";
         }
     }

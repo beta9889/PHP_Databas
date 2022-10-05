@@ -22,7 +22,12 @@
                 foreach($stmt->fetchall() as $row){ print_r($row); }
                 $stmt->closeCursor();
 
-                echo"<h1 class='flexCenter'> Connection Added </h1>";
+                echo"<h1 class='flexCenter'> Connection Added </h1>
+                    <form action='deerView.php' method='POST' class='flexCenter'>
+                        <input type='hidden' value='". $_POST['deerId'] ."' name='deer'/>
+                        <input type='submit' value='Return to Deer View '/>
+                    </form>";
+
             }
             catch (Exception $e){
                 echo"Error adding connection". $e->getMessage();
