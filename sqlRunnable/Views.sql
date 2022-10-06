@@ -1,4 +1,4 @@
--- Active: 1663691954105@@127.0.0.1@3306@a20behta
+-- Active: 1662618139196@@127.0.0.1@3306@a20behta
 USE a20behta;
 CREATE VIEW ViewWorkingDeer AS SELECT  WorkingDeer.deerNr AS DeerNr, 
         CONCAT(WorkingDeer.ClanName, " ",BaseRaces.RaceString) AS 'DeerName',
@@ -38,4 +38,4 @@ CREATE VIEW ViewDeerGroup AS SELECT DeerGroup.GroupName, DeerGroup.Capacity, Dee
 
 CREATE VIEW ViewDeerConnection AS Select D1.DeerName as 'name1',D1.retired  as 'Deer1 Retired',D1.DeerNr as 'DeerNr1' ,D2.DeerName as 'name2', D2.retired  as 'Deer2 Retired',D2.DeerNr as 'DeerNr2'
         From ViewAllDeer as D1 inner Join ViewAllDeer as D2 
-        Inner Join deertodeer ON deertodeer.FirstDeerNr = D1.DeerNr AND deertodeer.SecondDeerNr = D2.DeerNr; 
+        Inner Join DeerToDeer ON DeerToDeer.FirstDeerNr = D1.DeerNr AND DeerToDeer.SecondDeerNr = D2.DeerNr; 

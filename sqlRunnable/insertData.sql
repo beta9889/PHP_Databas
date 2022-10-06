@@ -1,5 +1,4 @@
--- Active: 1663691954105@@127.0.0.1@3306@a20behta
-
+-- Active: 1662618139196@@127.0.0.1@3306@a20behta
 USE a20behta;
 INSERT INTO DeerGroup(groupname,capacity,filled) VALUES ("gogoGaga",3,0),("Hammered",3,0);
 
@@ -32,4 +31,4 @@ CREATE USER 'b'@'localhost' IDENTIFIED BY 'a';
 -- GRANT INSERT, UPDATE, SELECT, DELETE, ON a20behta.* TO 'b'@'localhost';
 GRANT ALL ON a20behta.* TO 'b'@'localhost';
 
-select * from logging;
+select * from Logging;

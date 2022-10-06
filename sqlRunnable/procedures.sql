@@ -1,4 +1,4 @@
--- Active: 1663691954105@@127.0.0.1@3306@a20behta
+-- Active: 1662618139196@@127.0.0.1@3306@a20behta
 
 USE a20behta;
 
@@ -35,5 +35,3 @@ BEGIN
     DELETE FROM WorkingDeer WHERE WorkingDeer.DeerNr = ssnid;
 
 END ;
-
-select * from retireddeer;

@@ -14,8 +14,7 @@
         if(isset($_POST['deer'])){
             
             $deerNr = $_POST['deer'];
-            $pdo = new PDO('mysql:dbname=a20behta; host=localhost', $_SESSION['user'], $_SESSION['pass']);
-            $stmt = $pdo->prepare("SELECT * FROM ViewAllDeer WHERE  DeerNr = :ssnid");
+            $stmt = $pdo->prepare("SELECT * FROM ViewAllDeer WHERE DeerNr = :ssnid");
             $stmt->bindValue(':ssnid',$_POST['deer']);
             $stmt->execute();
             
@@ -39,7 +38,7 @@
                 if($row['retired'] == 'Working'){
                     echo "<form action='retireDeer.php' method='GET'>
                         <input type='hidden' value='" . $deerNr . "'name='retireADeerId'/>
-                        <input type='submit'/>
+                        <input type='submit' value='Retire This Deer'/>
                     </form>";  
                 }
             }

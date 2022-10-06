@@ -1,4 +1,4 @@
--- Active: 1663691954105@@127.0.0.1@3306@a20behta
+-- Active: 1662618139196@@127.0.0.1@3306@a20behta
 
 USE a20behta;
 CREATE TRIGGER BeforeBaseRaces BEFORE INSERT ON BaseRaces

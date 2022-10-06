@@ -17,7 +17,7 @@
             try{
                 $stmt = $pdo->prepare("INSERT INTO DeerToDeer(firstDeerNr,secondDeerNr) Values(:mainDeer,:secondDeer)");
                 $stmt->bindValue(":mainDeer",$_POST['deerId']);
-                $stmt->bindValue(":secondDeer",$_POST['addConnId']);
+                $stmt->bindValue(":secondDeer",$_POST['addConnId']);    
                 $stmt->execute();
                 foreach($stmt->fetchall() as $row){ print_r($row); }
                 $stmt->closeCursor();
